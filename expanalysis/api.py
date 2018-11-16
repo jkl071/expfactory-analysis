@@ -2,7 +2,8 @@
 expanalysis.api: functions for retrieving experiment factory results
 
 """
-
+import pandas as pd
+import os
 from expanalysis.utils import get_pages
 
 def findWorker(arg):
@@ -28,6 +29,20 @@ def get_results(url=None,access_token=None):
     else:
         print("You must provide an access_token to authenticate to the API.")
    
-access_token = "5163be7d0a6a347ebce46dac018547a6846ed47c" # expfactory.org/token
+access_token = "" # expfactory.org/token
 results = get_results(access_token=access_token)
    
+#This snippet creates a folder called expfactory_online_data in your /Users/elliott/Desktop directory.  
+#If you don't like the path where the folder is created, change the file path variable to your desired location
+file_path = "~/Desktop/expfactory_online_data"
+if not os.path.exists(file_path):
+    os.makedirs(file_path)
+
+#Line 69 returns each sub as a csv file, inside the directory, /Desktop/expfactory_online_data
+#change the directory given in order to match up with yours.
+all_subs_df = []
+for i in range(0, len(results)):
+    if results[i]['completed'] == True:
+        single_sub_df = pd.DataFrame(results[i]['data'][0]['trialdata'])
+        single_sub_df.to_csv('~/Desktop/expfactory_online_data/all_subs_df_'+str(i)+'.csv',sep=',')
+        
