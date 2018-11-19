@@ -29,7 +29,7 @@ def get_results(url=None,access_token=None):
     else:
         print("You must provide an access_token to authenticate to the API.")
    
-access_token = "" # expfactory.org/token
+access_token = "5163be7d0a6a347ebce46dac018547a6846ed47c" # expfactory.org/token
 results = get_results(access_token=access_token)
    
 #This snippet creates a folder called expfactory_online_data in your /Users/elliott/Desktop directory.  
