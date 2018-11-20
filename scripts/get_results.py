@@ -31,3 +31,8 @@ Which can then be converted into a dataframe easily
 >>> first_row_data = pandas.DataFrame(first_row_data)
 """
 
+<<<<<<< HEAD
+=======
+access_token = "5163be7d0a6a347ebce46dac018547a6846ed47c" # expfactory.org/token
+results = get_results(access_token=access_token)
+>>>>>>> 6c3b85a1a47b61354e309a5aae31b57fb63d70e5
